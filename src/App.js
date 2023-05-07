@@ -34,11 +34,31 @@ function App() {
               latitude={airplane.latitude}
               longitude={airplane.longitude}
             >
-              <button className="marker-btn">
+              <button 
+                className="marker-btn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedPlane(airplane);
+                  e.stopPropagation();
+                }}
+              >
                 <img src='yellow_plane.png' alt='Airplane Icon' />
               </button>
             </Marker>
           ))}
+
+          {selectedPlane ? (
+            <Popup 
+              latitude={selectedPlane.latitude}
+              longitude={selectedPlane.longitude}
+              onClose={() => setSelectedPlane(null)}
+            >
+              <div>
+                Airplane
+              </div>
+            </Popup>
+          ) : null}
+
         </ReactMapGL>
       </div>
     </div>

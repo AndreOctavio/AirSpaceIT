@@ -1,3 +1,37 @@
+.map-top_bar {
+  position: absolute;
+  top: 50px; /* adjust this value to change the position of the rectangle */
+  left: 0; /* adjust this value to change the position of the rectangle */
+  right: 0;
+  margin: auto;
+  width: 40%; /* adjust the padding to change the width of the rectangle */
+  height: 2.5%; /* adjust this value to change the height of the rectangle */
+  background-color: #020750e3;
+  border-radius: 20px;
+  padding: 20px;
+  z-index: 1;
+  display: flex; /* make the container a flexbox */
+  justify-content: space-between; /* position the children to either end of the container */
+  align-items: center; /* center the children vertically */
+}
+
+.app-name {
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-flag {
+  width: 30px; /* adjust this value to set the width of the logo */
+  height: 30px; /* adjust this value to set the height of the logo */
+  margin-left: 20.5%; /* adjust this value to set the space between the logo and the header title */
+  transform: translateY(-2.5%);
+}
+
 .map-wrapper {
   position: absolute;
   top: 0;

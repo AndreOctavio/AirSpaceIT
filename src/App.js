@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import Switch from 'react-switch';
 import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -13,11 +14,13 @@ const data = [
 
 function App() {
 
+  const [darkMode, setDarkMode] = useState(true);
+
   /*Coordenates of the center of italy*/
   const [viewport, setViewport] = useState({
     latitude: 42.5098,
     longitude: 12.5148,
-    zoom: 6
+    zoom: 8
   });
   
   const [selectedPlane, setSelectedPlane] = useState(null);
@@ -25,12 +28,32 @@ function App() {
 
   return (
     <div>
+      <div className="map-top_bar">
+        <div class="app-name">AirSpace IT</div>
+        <img src="Flag_of_Italy.svg" alt="Italian Flag" class="header-flag"/>
+        <div className="header-switch">
+          <Switch 
+            onChange={() => {setDarkMode(!darkMode)}} 
+            checked={darkMode} 
+            checkedIcon={<span style={{ fontSize: 18 }}>🌙</span>}
+            uncheckedIcon={<span style={{ fontSize: 19 }}>🔆</span>}
+            onColor="#303030"
+            offColor='#DCDCDC'
+          />
+        </div>
+      </div>
       <div className='map-wrapper'>
         <ReactMapGL
           {...viewport}
           mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           onMove={evt => setViewport(evt.viewport)}
-          mapStyle='mapbox://styles/mapbox/dark-v11'
+          mapStyle={darkMode ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/light-v10'}
+          minZoom={5.5}
+          maxZoom={10}
+          maxBounds={[
+            [5.116667, 34.95625287919582], // southwest coordinates
+            [20.016667, 47.883333]         // northeast coordinates
+          ]}                               // These have a little more than the limit of the italian airspace
         >
           {data.map((airplane) => (
             <Marker

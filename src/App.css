@@ -28,7 +28,7 @@
 .header-flag {
   width: 30px; /* adjust this value to set the width of the logo */
   height: 30px; /* adjust this value to set the height of the logo */
-  margin-left: 20.5%; /* adjust this value to set the space between the logo and the header title */
+  margin-left: 24%; /* adjust this value to set the space between the logo and the header title */
   transform: translateY(-2.5%);
 }
 

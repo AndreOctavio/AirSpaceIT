@@ -1,5 +1,5 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import ReactMapGL, { FullscreenControl, Marker, NavigationControl, Popup } from 'react-map-gl';
 import React, { useState } from 'react';
 import { TopBar } from '../components/TopBar';
 import { FetchData } from '../components/FetchData';
@@ -19,6 +19,8 @@ export const Map = () => {
 
   const [selectedPlane, setSelectedPlane] = useState(null);
   const [popupOpen, setPopupOpen] = useState(false);
+
+  //const [angle, setAngle] = useState(null); --- Need more Info
 
   return (
     <div>
@@ -44,6 +46,7 @@ export const Map = () => {
               key={airplane.icao24}
               latitude={airplane.latitude}
               longitude={airplane.longitude}
+              /*rotation={setAngle(bearing({latitude: airplane.latitude, longitude: airplane.longitude}, destination))} --- Need more Info*/
             >
               <button 
                 className="marker-btn"
@@ -70,12 +73,28 @@ export const Map = () => {
                 setSelectedPlane(null)
                 setPopupOpen(false);
               }}
+              anchor="top"
             >
-              <div>
-                Airplane
+              <div className="popup-title">- Airplane Info -</div>
+              <div className="popup-content">
+                <p>
+                  <strong>Flight Number:</strong> {selectedPlane.callsign}
+                </p>
+                <p>
+                  <strong>Altitude:</strong> {selectedPlane.baroAltitude} ft
+                </p>
+                <p>
+                  <strong>Longitude:</strong> {selectedPlane.longitude}
+                </p>
+                <p>
+                  <strong>Latitude:</strong> {selectedPlane.latitude}
+                </p>
               </div>
             </Popup>
           ) : null}
+
+          <NavigationControl />
+          <FullscreenControl />
 
         </ReactMapGL>
       </div>

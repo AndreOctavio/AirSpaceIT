@@ -53,3 +53,29 @@
   width: 30px;
   height: 30px;
 }
+
+.popup-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.popup-content {
+  line-height: 1.5;
+}
+
+.popup-content p {
+  margin: 0;
+}
+
+.mapboxgl-popup-close-button {
+  font-size: 20px;
+  color: #000;
+  opacity: 0.6;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.mapboxgl-popup-close-button:hover {
+  opacity: 1;
+}

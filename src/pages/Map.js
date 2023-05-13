@@ -2,16 +2,11 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import React, { useState } from 'react';
 import { TopBar } from '../components/TopBar';
-
-const data = [
-  { id: 1, latitude: 41.9028, longitude: 12.4964}, // Rome
-  { id: 2, latitude: 45.4408, longitude: 12.3155}, // Venice
-  { id: 3, latitude: 43.7711, longitude: 11.2486}, // Florence
-  { id: 4, latitude: 45.4642, longitude: 9.1900},  // Milan
-  { id: 5, latitude: 40.8518, longitude: 14.2681}, // Naples
-];
+import { FetchData } from '../components/FetchData';
 
 export const Map = () => {
+
+  const [data, setData] = useState(null);
 
   const [darkMode, setDarkMode] = useState(true);
 
@@ -27,6 +22,8 @@ export const Map = () => {
 
   return (
     <div>
+      <FetchData setData={setData} />
+      console.log(data);
       <TopBar darkMode={darkMode} setDarkMode={setDarkMode}/>
       
       <div className='map-wrapper'>
@@ -42,9 +39,9 @@ export const Map = () => {
             [20.016667, 47.883333]         // northeast coordinates
           ]}                               // These have a little more than the limit of the italian airspace
         >
-          {data.map((airplane) => (
+          {data?.map((airplane) => (
             <Marker
-              key={airplane.id}
+              key={airplane.icao24}
               latitude={airplane.latitude}
               longitude={airplane.longitude}
             >

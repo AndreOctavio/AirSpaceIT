@@ -6,6 +6,7 @@ import { FetchData } from '../components/FetchData';
 
 export const Map = () => {
 
+  /*All the data from the airplanes keeped here*/
   const [data, setData] = useState(null);
 
   const [darkMode, setDarkMode] = useState(true);
@@ -20,13 +21,21 @@ export const Map = () => {
   const [selectedPlane, setSelectedPlane] = useState(null);
   const [popupOpen, setPopupOpen] = useState(false);
 
+  const [input, setInput] = useState('');
+  const [search, setSearch] = useState(false);
   //const [angle, setAngle] = useState(null); --- Need more Info
 
   return (
     <div>
       <FetchData setData={setData} />
-      console.log(data);
-      <TopBar darkMode={darkMode} setDarkMode={setDarkMode}/>
+
+      <TopBar 
+        darkMode={darkMode} 
+        setDarkMode={setDarkMode} 
+        inputValue={input} 
+        setInputValue={setInput}
+        setSearch={setSearch}
+      />
       
       <div className='map-wrapper'>
         <ReactMapGL
@@ -58,19 +67,32 @@ export const Map = () => {
                 }}
               >
                 <img 
-                  src={selectedPlane === airplane && popupOpen ? 'blue_plane.png' : 'yellow_plane.png'}  
+                  src={selectedPlane === airplane && popupOpen ? 'blue_hex.png' : 'yellow_tri.png'}  
                   alt='Airplane Icon' 
                 />
               </button>
             </Marker>
           ))}
 
+          {search && (
+            <>
+              {data?.map((airplane) => {
+                if (airplane.callsign.trim().toLowerCase() === input.trim().toLowerCase()) {
+                  setSelectedPlane(airplane);
+                  setPopupOpen(true);
+                  setSearch(false);
+                }
+                return null;
+              })}
+            </>
+          )}
+          
           {selectedPlane ? (
             <Popup 
               latitude={selectedPlane.latitude}
               longitude={selectedPlane.longitude}
               onClose={() => {
-                setSelectedPlane(null)
+                setSelectedPlane(null);
                 setPopupOpen(false);
               }}
               anchor="top"
@@ -81,7 +103,7 @@ export const Map = () => {
                   <strong>Flight Number:</strong> {selectedPlane.callsign}
                 </p>
                 <p>
-                  <strong>Altitude:</strong> {selectedPlane.baroAltitude} ft
+                  <strong>Origin Country:</strong> {selectedPlane.originCountry}
                 </p>
                 <p>
                   <strong>Longitude:</strong> {selectedPlane.longitude}
@@ -89,6 +111,13 @@ export const Map = () => {
                 <p>
                   <strong>Latitude:</strong> {selectedPlane.latitude}
                 </p>
+                <p>
+                  <strong>Geo Altitude:</strong> {selectedPlane.geoAltitude} ft
+                </p>
+                <p>
+                  <strong>Baro Altitude:</strong> {selectedPlane.baroAltitude} ft
+                </p>
+                
               </div>
             </Popup>
           ) : null}

@@ -1,6 +1,6 @@
 # Project for Scalable and Reliable Services Course at University of Bologna
 
-Grade given to the project - 30/30. This is only the frontend developed by me, the Backend is in a different repository.
+Grade given to the project - 30/30. This is only the frontend developed by me, the Backend is in a different repository (https://github.com/treyshotz/ArrivalService).
 
 # Getting Started with Create React App
 

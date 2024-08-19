@@ -1,3 +1,7 @@
+# Frontend Project for Scalable and Reliable Services Course from the University of Bologna
+
+Grade given to the project - 30/30. Backend is in a different repository.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -2,6 +2,8 @@
 
 Grade given to the project - 30/30. This is only the frontend developed by me, the Backend is in a different repository (https://github.com/treyshotz/ArrivalService).
 
+The main goal of the project was to create a website that monitors all the activity in the italian airspace.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

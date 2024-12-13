@@ -1,8 +1,14 @@
-# Project for Scalable and Reliable Services Course at University of Bologna
+# Aircraft Monitoring Website - Frontend
 
-Grade given to the project - 30/30. This is only the frontend developed by me, the Backend is in a different repository (https://github.com/treyshotz/ArrivalService).
+This repository contains the **frontend** developed for the **Scalable and Reliable Services** course at the University of Bologna. This project received a **grade of 30/30**. The **backend** is hosted in a separate repository: [ArrivalService](https://github.com/treyshotz/ArrivalService).
 
-The main goal of the project was to create a website that monitors all the activity in the italian airspace.
+## Project Overview
+The primary objective of this project was to create a website where users can monitor, in real time, all aircraft flying within Italian airspace. 
+
+### Key Features
+- **Real-time Aircraft Monitoring**: View real-time data on all aircraft flying in Italian airspace.
+- **Aircraft Statistics**: Access specific details such as total distance traveled and CO2 emissions produced.
+- **Live Event Streaming**: Stream live updates of events involving Italian airports, including takeoffs, landings, and flight routes.
 
 # Getting Started with Create React App
 
